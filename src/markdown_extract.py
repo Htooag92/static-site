@@ -70,3 +70,25 @@ def split_nodes_link(old_nodes):
             new_nodes.append(TextNode(remaining_text, TextType.TEXT))
     
     return new_nodes
+
+def markdown_to_blocks(markdown):
+    """
+    Split a markdown string into blocks based on blank lines.
+    
+    Args:
+        markdown (str): The raw Markdown string to split into blocks.
+        
+    Returns:
+        list: A list of strings, each representing a markdown block.
+    """
+    # Split the markdown by double newlines
+    raw_blocks = markdown.split("\n\n")
+    
+    # Strip whitespace and filter out empty blocks
+    blocks = []
+    for block in raw_blocks:
+        stripped = block.strip()
+        if stripped:  # Only add non-empty blocks
+            blocks.append(stripped)
+    
+    return blocks
